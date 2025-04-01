@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class MiniGun : Item
 {
-    [SerializeField] GameObject _bulletPrefab;
-    [SerializeField] Transform _bulletSpawn;
-    [SerializeField] float _shootForce;
+    [SerializeField] private Bullet _bulletPrefab;
+    [SerializeField] private Transform _bulletSpawn;
+    [SerializeField] private float _shootForce;
     
     public override void UseItem(CharacterStorage characterStorage)
     {

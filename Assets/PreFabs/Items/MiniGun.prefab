@@ -314,7 +314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ParticleSystem: {fileID: 4917288968680575136}
-  _bulletPrefab: {fileID: 2502712160400971427, guid: 5ccae3b209d8743bc92f9e3f03cfa375,
+  _bulletPrefab: {fileID: 7682847239892041403, guid: 5ccae3b209d8743bc92f9e3f03cfa375,
     type: 3}
   _bulletSpawn: {fileID: 7596689820623027293}
   _shootForce: 25

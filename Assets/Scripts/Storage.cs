@@ -1,9 +1,6 @@
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.Rendering;
-using UnityEngine.Serialization;
 
-public class CharacterStorage : Character
+public class Storage : MonoBehaviour
 {
     [SerializeField] private Transform _handDirection;
     [SerializeField] private FreeSpaceChecker _freeSpaceChecker;
@@ -11,17 +8,7 @@ public class CharacterStorage : Character
     
     private string _logMessage = "ActionDone";
     private Item _currentItem;
-
-    public void AddHealthPoints(int amount)
-    {
-        Health += amount;
-    }
-
-    public void AddSpeedPoints(float amount)
-    {
-        Speed += amount;
-    }
-
+    
     private void OnCollisionEnter(Collision other)
     {
         if (_freeSpaceChecker.isOccupied == false && other.gameObject.GetComponent<Item>() != null)
@@ -37,7 +24,7 @@ public class CharacterStorage : Character
         {
             if (Input.GetKeyDown(KeyCode.F))
             {
-                _currentItem.UseItem(this);
+                _currentItem.Use(this);
               
                 Debug.Log(_logMessage);
                 

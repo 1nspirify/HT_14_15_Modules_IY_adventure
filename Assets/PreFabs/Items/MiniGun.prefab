@@ -313,11 +313,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56781e7ec6f3c4bc5a837bd51a2adcba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ParticleSystem: {fileID: 4917288968680575136}
-  _bulletPrefab: {fileID: 7682847239892041403, guid: 5ccae3b209d8743bc92f9e3f03cfa375,
+  _bulletPrefab: {fileID: 5817119358846623321, guid: 5ccae3b209d8743bc92f9e3f03cfa375,
     type: 3}
   _bulletSpawn: {fileID: 7596689820623027293}
   _shootForce: 25
+  ParticleSystem: {fileID: 198728934711372066, guid: e94e59e028d1e443081afdb682cdb7ba,
+    type: 3}
 --- !u!1001 &5116017340482795906
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -375,12 +376,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e94e59e028d1e443081afdb682cdb7ba, type: 3}
---- !u!198 &4917288968680575136 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 198728934711372066, guid: e94e59e028d1e443081afdb682cdb7ba,
-    type: 3}
-  m_PrefabInstance: {fileID: 5116017340482795906}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5111614141105792548 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4406089933021094, guid: e94e59e028d1e443081afdb682cdb7ba,

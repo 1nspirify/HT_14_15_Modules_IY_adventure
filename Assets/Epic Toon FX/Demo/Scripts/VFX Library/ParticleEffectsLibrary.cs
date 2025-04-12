@@ -36,7 +36,7 @@ public class ParticleEffectsLibrary : MonoBehaviour {
 	public Vector3[] ParticleEffectSpawnOffsets;
 	// How long until Particle Effect is Destroyed - 0 = never
 	public float[] ParticleEffectLifetimes;
-	public GameObject[] ParticleEffectPrefabs;
+	public UnityEngine.GameObject[] ParticleEffectPrefabs;
 
 	// Storing for deleting if looping particle effect
 	#pragma warning disable 414
@@ -104,7 +104,7 @@ public class ParticleEffectsLibrary : MonoBehaviour {
 	public void SpawnParticleEffect(Vector3 positionInWorldToSpawn) {
 		// Spawn Currently Selected Particle Effect
 		spawnPosition = positionInWorldToSpawn + ParticleEffectSpawnOffsets[CurrentParticleEffectIndex];
-		GameObject newParticleEffect = GameObject.Instantiate(ParticleEffectPrefabs[CurrentParticleEffectIndex], spawnPosition, ParticleEffectPrefabs[CurrentParticleEffectIndex].transform.rotation) as GameObject;
+		UnityEngine.GameObject newParticleEffect = UnityEngine.GameObject.Instantiate(ParticleEffectPrefabs[CurrentParticleEffectIndex], spawnPosition, ParticleEffectPrefabs[CurrentParticleEffectIndex].transform.rotation) as UnityEngine.GameObject;
 		newParticleEffect.name = "PE_" + ParticleEffectPrefabs[CurrentParticleEffectIndex];
 		// Store Looping Particle Effects Systems
 		if (ParticleEffectLifetimes [CurrentParticleEffectIndex] == 0) {

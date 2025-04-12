@@ -2,14 +2,16 @@ using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class CharacterMover : Character
+public class Mover : MonoBehaviour
 {
+    [SerializeField] private SpeedContainer _speedContainer;
+
     private string _horizontalAxis = "Horizontal";
     private string _verticalAxis = "Vertical";
 
     private float _xForce;
     private float _zForce;
-    
+
     private Rigidbody _rigidbody;
 
     private float _deadZone = 0.05f;
@@ -24,7 +26,7 @@ public class CharacterMover : Character
     private void Update()
     {
         GetInput();
-
+        
         if (DeadZone())
         {
             _isMove = true;
@@ -40,11 +42,13 @@ public class CharacterMover : Character
     {
         if (_isMove)
         {
-            _rigidbody.AddForce(Vector3.right * (_xForce * Speed), ForceMode.Force);
-            _rigidbody.AddForce(Vector3.forward * (_zForce * Speed), ForceMode.Force);
+            float speed = GetCurrentSpeed();
+            
+            _rigidbody.AddForce(Vector3.right * (_xForce * speed), ForceMode.Force);
+            _rigidbody.AddForce(Vector3.forward * (_zForce * speed), ForceMode.Force);
 
             Vector3 direction = _rigidbody.velocity;
-            
+
             if (direction.magnitude > _deadZone)
                 transform.rotation = Quaternion.LookRotation(direction);
         }
@@ -57,4 +61,6 @@ public class CharacterMover : Character
         _xForce = Input.GetAxis(_horizontalAxis);
         _zForce = Input.GetAxis(_verticalAxis);
     }
+    
+    private float GetCurrentSpeed() => _speedContainer.Speed;
 }

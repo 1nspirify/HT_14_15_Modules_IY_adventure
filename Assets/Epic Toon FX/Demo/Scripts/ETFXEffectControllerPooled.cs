@@ -7,8 +7,8 @@ namespace EpicToonFX
 {
     public class ETFXEffectControllerPooled : MonoBehaviour
     {
-        public GameObject[] effects;
-        private List<GameObject> effectsPool;
+        public UnityEngine.GameObject[] effects;
+        private List<UnityEngine.GameObject> effectsPool;
         private int effectIndex = 0;
 
         [Space(10)]
@@ -23,7 +23,7 @@ namespace EpicToonFX
         [Range(0.001f, 0.5f)]
         public float autoRotationSpeed = 0.1f;
 
-        private GameObject currentEffect;
+        private UnityEngine.GameObject currentEffect;
         private Text effectNameText;
         private Text effectIndexText;
 
@@ -32,18 +32,18 @@ namespace EpicToonFX
         //Caching components
         private void Awake()
         {
-            effectNameText = GameObject.Find("EffectName").GetComponent<Text>();
-            effectIndexText = GameObject.Find("EffectIndex").GetComponent<Text>();
+            effectNameText = UnityEngine.GameObject.Find("EffectName").GetComponent<Text>();
+            effectIndexText = UnityEngine.GameObject.Find("EffectIndex").GetComponent<Text>();
 
             etfxMouseOrbit = Camera.main.GetComponent<ETFXMouseOrbit>();
             etfxMouseOrbit.etfxEffectControllerPooled = this;
 
             //Pooling
-            effectsPool = new List<GameObject>();
+            effectsPool = new List<UnityEngine.GameObject>();
 
             for (int i = 0; i < effects.Length; i++)
             {
-                GameObject effect = Instantiate(effects[i], transform.position, Quaternion.identity);
+                UnityEngine.GameObject effect = Instantiate(effects[i], transform.position, Quaternion.identity);
                 effect.transform.parent = transform;
                 effectsPool.Add(effect);
 

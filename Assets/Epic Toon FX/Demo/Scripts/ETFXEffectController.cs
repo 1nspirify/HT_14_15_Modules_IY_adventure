@@ -6,7 +6,7 @@ namespace EpicToonFX
 {
     public class ETFXEffectController : MonoBehaviour
     {
-        public GameObject[] effects;
+        public UnityEngine.GameObject[] effects;
         private int effectIndex = 0;
 
         [Space(10)]
@@ -21,7 +21,7 @@ namespace EpicToonFX
         [Range(0.001f, 0.5f)]
         public float autoRotationSpeed = 0.1f;
 
-        private GameObject currentEffect;
+        private UnityEngine.GameObject currentEffect;
         private Text effectNameText;
         private Text effectIndexText;
 
@@ -29,8 +29,8 @@ namespace EpicToonFX
 
         private void Awake()
         {
-            effectNameText = GameObject.Find("EffectName").GetComponent<Text>();
-            effectIndexText = GameObject.Find("EffectIndex").GetComponent<Text>();
+            effectNameText = UnityEngine.GameObject.Find("EffectName").GetComponent<Text>();
+            effectIndexText = UnityEngine.GameObject.Find("EffectIndex").GetComponent<Text>();
 
             etfxMouseOrbit = Camera.main.GetComponent<ETFXMouseOrbit>();
             etfxMouseOrbit.etfxEffectController = this;
@@ -116,7 +116,7 @@ namespace EpicToonFX
         private IEnumerator EffectLoop()
         {
             //Instantiating effect
-            GameObject effect = Instantiate(effects[effectIndex], transform.position, Quaternion.identity);
+            UnityEngine.GameObject effect = Instantiate(effects[effectIndex], transform.position, Quaternion.identity);
             currentEffect = effect;
 
             if (disableLights && effect.GetComponent<Light>())

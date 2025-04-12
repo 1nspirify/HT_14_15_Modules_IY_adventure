@@ -1,28 +1,39 @@
 using Random = UnityEngine.Random;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class HealthPack : Item
 {
+    [SerializeField] private ParticleSystem _particleSystem;
+
     private int _maxHealthPoints = 15;
     private int _minHealthPoints = 0;
 
-    private void Awake()
+    private int _healthPointsValue;
+
+    private void Initialize(int _maxHealthPoints, int _minHealthPoints)
     {
-        Initialize(_maxHealthPoints, _minHealthPoints);
+        _healthPointsValue = Random.Range(_minHealthPoints, _maxHealthPoints);
     }
 
-    public int HealthPointsValue { get; set; }
-
-    public void Initialize(int _maxHealthPoints, int _minHealthPoints)
+    public override void Use(Storage owner)
     {
-        HealthPointsValue = Random.Range(_minHealthPoints, _maxHealthPoints);
-    }
+        HealthContainer healthContainer = owner.GetComponent<HealthContainer>();
 
-    public override void UseItem(CharacterStorage characterStorage)
-    {
-        Instantiate(ParticleSystem, transform.position, Quaternion.identity);
-        characterStorage.AddHealthPoints(HealthPointsValue);
+        if (healthContainer != null)
+        {
+            Initialize(_maxHealthPoints, _minHealthPoints);
+            healthContainer.Health += _healthPointsValue;
+
+            ParticleSystem _healthParticleSystem = Instantiate(_particleSystem, transform.position, Quaternion.identity);
+            _healthParticleSystem.Play();
+
+            Debug.Log($"Boost pack used with {_healthPointsValue}points");
+        }
         
-        Debug.Log($"Boost pack used with {HealthPointsValue}points");
+        else
+        {
+            Debug.LogWarning($"HealthContainer not found");
+        }
     }
 }

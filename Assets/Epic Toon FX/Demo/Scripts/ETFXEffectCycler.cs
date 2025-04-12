@@ -7,7 +7,7 @@ namespace EpicToonFX
 {
 	public class ETFXEffectCycler : MonoBehaviour
 	{
-		public List<GameObject> listOfEffects;
+		public List<UnityEngine.GameObject> listOfEffects;
 		int effectIndex = 0;
 	
 		[Header("Spawn Settings")]
@@ -42,7 +42,7 @@ namespace EpicToonFX
 
 		private IEnumerator EffectLoop()
 		{
-            GameObject instantiatedEffect = (GameObject) Instantiate(listOfEffects[effectIndex], transform.position, transform.rotation * Quaternion.Euler (0, 0, 0));
+            UnityEngine.GameObject instantiatedEffect = (UnityEngine.GameObject) Instantiate(listOfEffects[effectIndex], transform.position, transform.rotation * Quaternion.Euler (0, 0, 0));
 			
 			if (disableLights && instantiatedEffect.GetComponent<Light>())
 			{

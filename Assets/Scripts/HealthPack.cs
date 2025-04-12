@@ -1,6 +1,5 @@
 using Random = UnityEngine.Random;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class HealthPack : Item
 {
